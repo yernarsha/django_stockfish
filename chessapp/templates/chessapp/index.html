@@ -1,0 +1,24 @@
+{% extends 'chessapp/base.html' %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h5>Select a PGN file:</h5><br/>
+
+    <input type="file" name="myfile"><br/><br/>
+    <button type="submit" class="btn btn-primary">Analyze</button>
+</form><br/> 
+
+{% if info %}
+    {{ info|linebreaksbr }}
+{% endif %}
+
+<hr>
+
+{% if pgn_content %}
+    {{ pgn_content|linebreaksbr }}
+{% endif %}
+
+
+{% endblock %}
